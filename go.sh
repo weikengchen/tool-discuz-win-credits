@@ -24,10 +24,10 @@ tmpfilename=$(mktemp)
 
 for i in `seq 1 $loadtime`;
 do
-	a=$(shuf -i 0-255 -n 1)
-	b=$(shuf -i 0-255 -n 1)
-	c=$(shuf -i 0-255 -n 1)
-	d=$(shuf -i 0-255 -n 1)
+	a=$($randfunc -i 0-255 -n 1)
+	b=$($randfunc -i 0-255 -n 1)
+	c=$($randfunc -i 0-255 -n 1)
+	d=$($randfunc -i 0-255 -n 1)
 	
 	curl -s -c $tmpfilename --header "X-Forwarded-For: $a.$b.$c.$d" "$website/forum.php?fromuid=$fromuid" > /dev/null
 	curl -s -c $tmpfilename --header "X-Forwarded-For: $a.$b.$c.$d" "$website/forum.php" > /dev/null
